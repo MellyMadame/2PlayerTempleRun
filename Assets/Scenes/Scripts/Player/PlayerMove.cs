@@ -9,7 +9,7 @@ public class PlayerMove : MonoBehaviour
     // Die Geschwindigkeit, in der nach rechts oder links gelaufen wird
     public float leftRightSpeed = 4;
     //es muss überprüft werden, ob der Spieler sich bewegen kann. Für den Start des Spiels (Tutorial 12)
-    static public bool canMove = true;
+    static public bool canMove = false;
    
     // Update is called once per frame
     void Update()
@@ -26,5 +26,6 @@ public class PlayerMove : MonoBehaviour
             transform.Translate(Vector3.left * Time.deltaTime * leftRightSpeed * -1);
              }
         }
+    
     }
 }
