@@ -10,6 +10,7 @@ public class PlayerMove : MonoBehaviour
     public float leftRightSpeed = 4;
     //es muss überprüft werden, ob der Spieler sich bewegen kann. Für den Start des Spiels (Tutorial 12)
     static public bool canMove = false;
+    private bool isOnLeftSide = true; // Starting on the left side
    
     // Update is called once per frame
     void Update()
@@ -17,15 +18,22 @@ public class PlayerMove : MonoBehaviour
         //Vector 3 = z-Achse, 
         transform.Translate(Vector3.forward * Time.deltaTime * moveSpeed, Space.World);
         if (canMove == true){
-            if (Input.GetKey(KeyCode.LeftArrow)) { 
-            if(this.gameObject.transform.position.x > LevelBoundary.leftSide) 
-            transform.Translate(Vector3.left * Time.deltaTime * leftRightSpeed);
-            }
-             if (Input.GetKey(KeyCode.RightArrow)) {  
-            // die Minus 1 zum Schluss invertiert die Bewegung nach links. Somit geht der Spieler nach rechts. 
-            transform.Translate(Vector3.left * Time.deltaTime * leftRightSpeed * -1);
-             }
+
+             if (isOnLeftSide && Input.GetKey(KeyCode.RightArrow))
+        {
+            SwitchSide();
+            // Moves an object up 2 units
+            transform.position += new Vector3(4, 0, 0);
         }
-    
+        else if (!isOnLeftSide && Input.GetKey(KeyCode.LeftArrow))
+        {   
+            transform.position += new Vector3(-4, 0, 0);
+            SwitchSide();
+        }
+        }
     }
+     void SwitchSide() {
+        isOnLeftSide = !isOnLeftSide;
+    }
+    
 }
