@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -512,6 +512,7 @@ GameObject:
   - component: {fileID: 906652940}
   - component: {fileID: 906652934}
   - component: {fileID: 906652939}
+  - component: {fileID: 906652941}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -631,6 +632,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1.0000001}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &906652941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 906652933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26aabdcdb2d28c64c80527227aca2579, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabToSpawn: {fileID: 7011430318258968185, guid: eeb0716e4c70b904884ea68347d72a3b, type: 3}
+  Player: {fileID: 906652933}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -837,8 +852,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2109308478}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1, y: 0.8, z: 7.32}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalPosition: {x: -2.02, y: 1.05, z: 7.32}
+  m_LocalScale: {x: 2.9212115, y: 1.98515, z: 1.7242999}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
