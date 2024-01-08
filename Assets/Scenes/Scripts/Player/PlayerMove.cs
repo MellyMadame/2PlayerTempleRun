@@ -14,7 +14,12 @@ public class PlayerMove : MonoBehaviour
     private bool isOnLeftSide = true; // Starting on the left side
     
     public bool isJumping = false;
+
+    public bool isDucking = false;
+    public bool standUp = false;
     public bool comingDown = false;
+    public bool crouch = false; // gehört zum crouch code
+     Vector3 defaultScale;
     
     public GameObject playerObject;
 
@@ -33,19 +38,37 @@ public class PlayerMove : MonoBehaviour
             // Moves an object up 2 units
             transform.position += new Vector3(4, 0, 0);
         }
-        if (!isOnLeftSide && Input.GetKey(KeyCode.LeftArrow))
+            if (!isOnLeftSide && Input.GetKey(KeyCode.LeftArrow))
         {   
             transform.position += new Vector3(-4, 0, 0);
             SwitchSide();
         }
+        
             if(Input.GetKey(KeyCode.UpArrow)){
                 if(isJumping == false)
                 {
                     isJumping = true;
-                    playerObject.GetComponent<Animator>().Play("mixamo_com");
+                    playerObject.GetComponent<Animator>().Play("Jumping Up");
                     StartCoroutine(JumpSequence());
                 }
             }
+          /*  if(Input.GetKey(KeyCode.DownArrow)){
+                if(isDucking == false){
+                isDucking = true;
+                playerObject.GetComponent<Animator>().Play("ducken");
+                StartCoroutine(duckSequence());
+                }
+            }*/
+              crouch = Input.GetKey(KeyCode.S);
+        if (crouch)
+        {
+            transform.localScale = Vector3.Lerp(transform.localScale, new Vector3(defaultScale.x, defaultScale.y * 0.4f, defaultScale.z), Time.deltaTime * 7);
+        }
+        else
+        {
+            transform.localScale = Vector3.Lerp(transform.localScale, defaultScale, Time.deltaTime * 7);
+        } //nur das gehört zum crouch code. Funktioniert aber leider nicht...
+    }
       
 
         // Handle jumping
@@ -58,8 +81,19 @@ public class PlayerMove : MonoBehaviour
                 transform.Translate(Vector3.up * Time.deltaTime * -3, Space.World);
             }
         }
+        /*
+        if(isDucking == true){
+            if(standUp == false){
+            transform.Translate(Vector3.down * Time.deltaTime * -3, Space.World);
+            }
+            if(standUp == true){
+                transform.Translate(Vector3.down * Time.deltaTime * 3, Space.World);
+            }
+        }*/
+      
+
         }
-    }
+    
      void SwitchSide() {
         isOnLeftSide = !isOnLeftSide;
     }
@@ -72,6 +106,14 @@ public class PlayerMove : MonoBehaviour
         comingDown = false;
         playerObject.GetComponent<Animator>().Play("Standard Run");
 
+    }
+    IEnumerator duckSequence(){
+        yield return new WaitForSeconds(0.6f);
+        standUp = true;
+         yield return new WaitForSeconds(0.6f);
+        isDucking = false;
+        standUp = false;
+        playerObject.GetComponent<Animator>().Play("Standard Run");
     }
     
 }
