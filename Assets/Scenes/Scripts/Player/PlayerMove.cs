@@ -21,7 +21,6 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-         bool jumpInput = Input.GetButtonDown("Jump");
 
         //Vector 3 = z-Achse, 
         transform.Translate(Vector3.forward * Time.deltaTime * moveSpeed, Space.World);
@@ -42,7 +41,7 @@ public class PlayerMove : MonoBehaviour
                 if(isJumping == false)
                 {
                     isJumping = true;
-                    playerObject.GetComponent<Animator>().Play("mixamo_com");
+                    playerObject.GetComponent<Animator>().Play("Jumping Up");
                     StartCoroutine(JumpSequence());
                 }
             }
