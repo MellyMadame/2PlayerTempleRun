@@ -5,7 +5,7 @@ using UnityEngine;
 public class GenerateLevel : MonoBehaviour
 {
     public GameObject[] section;
-    public int zPos =50;
+    public int zPos =25;
     public bool creatingSection = false;
     public int secNum;
     // Update is called once per frame
@@ -20,8 +20,8 @@ public class GenerateLevel : MonoBehaviour
     IEnumerator GenerateSection(){
         secNum = Random.Range(0, 3);
         Instantiate(section[secNum], new Vector3(0,0,zPos), Quaternion.identity);
-        zPos += 50;
-        yield return new WaitForSeconds(2);
+        zPos += 25;
+        yield return new WaitForSeconds(4);
         creatingSection = false;
     }
 }
