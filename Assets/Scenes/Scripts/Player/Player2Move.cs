@@ -3,40 +3,42 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine;
 
-public class PlayerMove : MonoBehaviour
+public class Player2Move : MonoBehaviour
 {
-    public float moveSpeed = 3;
+    public  float moveSpeed = 3;
 
     //es muss überprüft werden, ob der Spieler sich bewegen kann. Für den Start des Spiels (Tutorial 12)
     static public bool canMove = false;
   
-    private bool isOnLeftSide = true; // Starting on the left side
+    public bool isOnRightSide = true; // Starting on the Right side
     
     public bool isJumping = false;
     public bool comingDown = false;
     
     public GameObject playerObject;
 
+    
     // Update is called once per frame
     void Update()
     {
-
+        print("in Update 2");
         //Vector 3 = z-Achse, 
         transform.Translate(Vector3.forward * Time.deltaTime * moveSpeed, Space.World);
-        if (canMove == true){
-
-             if (isOnLeftSide && Input.GetKey(KeyCode.RightArrow))
-        {
-            SwitchSide();
-            // Moves an object up 2 units
-            transform.position += new Vector3(4, 0, 0);
+        
+            print("Is in canMove");
+             if (isOnRightSide && Input.GetKeyUp(KeyCode.A))
+        {   print("Is in A");
+             SwitchSide();
+           // Moves an object up 2 units
+           transform.position += new Vector3(-4, 0, 0);
         }
-        if (!isOnLeftSide && Input.GetKey(KeyCode.LeftArrow))
+        if (!isOnRightSide && Input.GetKeyUp(KeyCode.D))
         {   
-            transform.position += new Vector3(-4, 0, 0);
-            SwitchSide();
+            print("Is in D");
+            transform.position += new Vector3(4, 0, 0);
+           SwitchSide();
         }
-            if(Input.GetKey(KeyCode.UpArrow)){
+            if(Input.GetKeyUp(KeyCode.W)){
                 if(isJumping == false)
                 {
                     isJumping = true;
@@ -56,10 +58,10 @@ public class PlayerMove : MonoBehaviour
                 transform.Translate(Vector3.up * Time.deltaTime * -3, Space.World);
             }
         }
-        }
+        
     }
      void SwitchSide() {
-        isOnLeftSide = !isOnLeftSide;
+        isOnRightSide = !isOnRightSide;
     }
     
     IEnumerator JumpSequence(){
