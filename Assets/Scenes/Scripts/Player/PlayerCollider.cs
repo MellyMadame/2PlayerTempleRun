@@ -21,7 +21,6 @@ public class PlayerCollider : MonoBehaviour
         // Check if the player collides with an object tagged as "LifePickup"
         //if (collision.gameObject.CompareTag("Obstacle"))
         //{
-            print("Enter");
             // Increment the player's lives
             playerLives--;
 
