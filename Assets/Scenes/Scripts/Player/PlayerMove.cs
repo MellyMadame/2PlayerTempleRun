@@ -59,12 +59,12 @@ public class PlayerMove : MonoBehaviour
      
     private void SpawnPrefabLeft()
     {
-        GameObject spawnedObject = Instantiate(prefabToSpawn, new Vector3(-3.2f, Player.transform.position.y, Player.transform.position.z - 0.5f), Quaternion.identity);
+        GameObject spawnedObject = Instantiate(prefabToSpawn, new Vector3(-3.2f, Player.transform.position.y, Player.transform.position.z - 2f), Quaternion.identity);
     }
 
     private void SpawnPrefabRight()
     {
-        GameObject spawnedObject = Instantiate(prefabToSpawn, new Vector3(0.0f, Player.transform.position.y, Player.transform.position.z - 0.5f), Quaternion.identity);
+        GameObject spawnedObject = Instantiate(prefabToSpawn, new Vector3(0.0f, Player.transform.position.y, Player.transform.position.z - 2f), Quaternion.identity);
     }
     
     IEnumerator JumpSequence(){
