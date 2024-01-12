@@ -12,21 +12,21 @@ public class CreateObstacle : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.L))
         {
-            SpawnPrefabLeft();
+            SpawnPrefabRight();
         }
         if (Input.GetKeyUp(KeyCode.K))
         {
-            SpawnPrefabRight();
+            SpawnPrefabLeft();
         }
-    }
-
-    private void SpawnPrefabRight()
-    {
-        GameObject spawnedObject = Instantiate(prefabToSpawn, new Vector3(-2.2f, Player.transform.position.y, Player.transform.position.z - 2.2f), Quaternion.identity);
     }
 
     private void SpawnPrefabLeft()
     {
-        GameObject spawnedObject = Instantiate(prefabToSpawn, new Vector3(2.2f, Player.transform.position.y, Player.transform.position.z - 2.1f), Quaternion.identity);
+        GameObject spawnedObject = Instantiate(prefabToSpawn, new Vector3(-3.2f, Player.transform.position.y, Player.transform.position.z - 2.2f), Quaternion.identity);
+    }
+
+    private void SpawnPrefabRight()
+    {
+        GameObject spawnedObject = Instantiate(prefabToSpawn, new Vector3(0.0f, Player.transform.position.y, Player.transform.position.z - 2.1f), Quaternion.identity);
     }
 }
