@@ -7,8 +7,6 @@ public class PlayerMove : MonoBehaviour
 {
     public float moveSpeed = 3;
 
-    // Die Geschwindigkeit, in der nach rechts oder links gelaufen wird
-    public float leftRightSpeed = 4;
     //es muss überprüft werden, ob der Spieler sich bewegen kann. Für den Start des Spiels (Tutorial 12)
     static public bool canMove = false;
     private bool isOnLeftSide = true; // Starting on the left side
@@ -21,26 +19,19 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+         transform.Translate(Vector3.forward * Time.deltaTime * moveSpeed, Space.World);
+        if (canMove == true){
 
-        //Vector 3 = z-Achse, 
-        transform.Translate(Vector3.forward * Time.deltaTime * moveSpeed, Space.World);
-        if (canMove == true)
-        {
-
-            if (isOnLeftSide && Input.GetKey(KeyCode.RightArrow))
+            if (Input.GetKeyUp(KeyCode.RightArrow))
             {
-                SwitchSide();
-                // Moves an object up 2 units
-                transform.position += new Vector3(4, 0, 0);
+            SpawnPrefabRight();
             }
-            if (!isOnLeftSide && Input.GetKey(KeyCode.LeftArrow))
-            {
-                transform.position += new Vector3(-4, 0, 0);
-                SwitchSide();
+            if (Input.GetKeyUp(KeyCode.LeftArrow))
+             {
+            SpawnPrefabLeft();
             }
-            if (Input.GetKey(KeyCode.UpArrow))
-            {
-                if (isJumping == false)
+            if(Input.GetKey(KeyCode.UpArrow)){
+                if(isJumping == false)
                 {
                     isJumping = true;
                     playerObject.GetComponent<Animator>().Play("Jumping Up");
@@ -62,10 +53,19 @@ public class PlayerMove : MonoBehaviour
                 }
             }
         }
+        
     }
-    void SwitchSide()
+    }
+        //Vector 3 = z-Achse, 
+     
+    private void SpawnPrefabLeft()
     {
-        isOnLeftSide = !isOnLeftSide;
+        GameObject spawnedObject = Instantiate(prefabToSpawn, new Vector3(-3.2f, Player.transform.position.y, Player.transform.position.z - 2f), Quaternion.identity);
+    }
+
+    private void SpawnPrefabRight()
+    {
+        GameObject spawnedObject = Instantiate(prefabToSpawn, new Vector3(0.0f, Player.transform.position.y, Player.transform.position.z - 2f), Quaternion.identity);
     }
 
     IEnumerator JumpSequence()
