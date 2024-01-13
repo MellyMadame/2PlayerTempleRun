@@ -14,10 +14,12 @@ public class Player2Collider1 : MonoBehaviour
     {
         thePlayer = GameObject.Find("Player2");
         charModel = GameObject.Find("/Player2/Ch48_nonPBR@Standard Run");
+        print("ist in start");
     }
 
     void OnTriggerEnter(Collider other)
     {
+        print("is in on trigger");
         // Check if the player collides with an object tagged as "LifePickup"
         //if (collision.gameObject.CompareTag("Obstacle"))
         //{
@@ -41,15 +43,15 @@ public class Player2Collider1 : MonoBehaviour
     {
          if (player2Lives == 2)
         {
-            GameObject.Find("/Canvas/Heart3Player2").SetActive(false);
+            GameObject.Find("/Canvas/GreenHeart3").SetActive(false);
         }
         if (player2Lives == 1)
         {
-            GameObject.Find("/Canvas/Heart2Player2").SetActive(false);
+            GameObject.Find("/Canvas/GreenHeart2").SetActive(false);
         }
         if (player2Lives == 0)
         {
-            GameObject.Find("/Canvas/Heart1Player2").SetActive(false);
+            GameObject.Find("/Canvas/GreenHeart1").SetActive(false);
         }
     }
 }

@@ -41,15 +41,15 @@ public class PlayerCollider : MonoBehaviour
     {
         if (playerLives == 2)
         {
-            GameObject.Find("/Canvas/Heart3").SetActive(false);
+            GameObject.Find("/Canvas/RedHeart3").SetActive(false);
         }
         if (playerLives == 1)
         {
-            GameObject.Find("/Canvas/Heart2").SetActive(false);
+            GameObject.Find("/Canvas/RedHeart2").SetActive(false);
         }
         if (playerLives == 0)
         {
-            GameObject.Find("/Canvas/Heart1").SetActive(false);
+            GameObject.Find("/Canvas/RedHeart1").SetActive(false);
         }
     }
 }

@@ -21,20 +21,17 @@ public class Player2Move : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print("in Update 2");
         //Vector 3 = z-Achse, 
         transform.Translate(Vector3.forward * Time.deltaTime * moveSpeed, Space.World);
         
-            print("Is in canMove");
              if (isOnRightSide && Input.GetKeyUp(KeyCode.A))
-        {   print("Is in A");
+        {   
              SwitchSide();
            // Moves an object up 2 units
            transform.position += new Vector3(-4, 0, 0);
         }
         if (!isOnRightSide && Input.GetKeyUp(KeyCode.D))
         {   
-            print("Is in D");
             transform.position += new Vector3(4, 0, 0);
            SwitchSide();
         }
