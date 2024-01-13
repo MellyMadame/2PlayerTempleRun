@@ -9,32 +9,43 @@ public class PlayerCollider : MonoBehaviour
 
     public GameObject thePlayer;
     public GameObject charModel;
+    public GameObject retryWindow;
 
     private void Start()
     {
         thePlayer = GameObject.Find("Player");
         charModel = GameObject.Find("/Player/Ch48_nonPBR@Standard Run");
+        //retryWindow = GameObject.Find("/Canvas/RetryFenster");
     }
 
     void OnTriggerEnter(Collider other)
     {
-        // Check if the player collides with an object tagged as "LifePickup"
-        //if (collision.gameObject.CompareTag("Obstacle"))
-        //{
-            // Increment the player's lives
-            playerLives--;
+        //print("Enter");
+        // Increment the player's lives
+        playerLives--;
 
-            // Destroy the life pickup object (adjust as needed)
-            //Destroy(collision.gameObject);
+        //Destroy(collision.gameObject);
 
-            HideHearts();
-            if (playerLives == 0)
-            {
-                thePlayer.GetComponent<PlayerMove>().enabled = false;
-                charModel.GetComponent<Animator>().Play("Stumble Back");
-            }
-        //}
-        // You can add more collision checks for other scenarios (e.g., colliding with enemies, hazards, etc.)
+        HideHearts();
+        if (playerLives == 0)
+        {
+            EndOfGame();
+        }
+    }
+
+    private void EndOfGame()
+    {
+        thePlayer.GetComponent<PlayerMove>().enabled = false;
+        charModel.GetComponent<Animator>().Play("Stumble Back");
+        StartCoroutine(DelayedWindowShow(2f));
+
+        //Retry window anzeigen
+    }
+
+    IEnumerator DelayedWindowShow(float f)
+    {
+        yield return new WaitForSeconds(f);
+        retryWindow.SetActive(true);
     }
 
     private void HideHearts()
