@@ -17,7 +17,7 @@ public class Player2Move : MonoBehaviour
     
     public GameObject playerObject;
 
-    
+
     // Update is called once per frame
     void Update()
     {

@@ -7,19 +7,17 @@ public class Player2Collider1 : MonoBehaviour
 {
     public int player2Lives = 3; // Initial number of lives
 
-    public GameObject thePlayer;
-    public GameObject charModel;
+    public GameObject thePlayer2;
+    public GameObject charModel2;
 
     private void Start()
     {
-        thePlayer = GameObject.Find("Player2");
-        charModel = GameObject.Find("/Player2/Ch48_nonPBR@Standard Run");
-        print("ist in start");
+        thePlayer2 = GameObject.Find("Player2");
+        charModel2 = GameObject.Find("/Player2/Ch48_nonPBR@Standard Run");
     }
 
     void OnTriggerEnter(Collider other)
     {
-        print("is in on trigger");
         // Check if the player collides with an object tagged as "LifePickup"
         //if (collision.gameObject.CompareTag("Obstacle"))
         //{
@@ -32,8 +30,8 @@ public class Player2Collider1 : MonoBehaviour
             HideHearts();
             if (player2Lives == 0)
             {
-                thePlayer.GetComponent<PlayerMove>().enabled = false;
-                charModel.GetComponent<Animator>().Play("Stumble Back");
+                thePlayer2.GetComponent<Player2Move>().enabled = false;
+                charModel2.GetComponent<Animator>().Play("Stumble Back");
             }
         //}
         // You can add more collision checks for other scenarios (e.g., colliding with enemies, hazards, etc.)
