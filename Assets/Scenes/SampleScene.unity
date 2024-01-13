@@ -3434,9 +3434,8 @@ GameObject:
   - component: {fileID: 1173283818}
   - component: {fileID: 1173283817}
   - component: {fileID: 1173283816}
-  - component: {fileID: 1173283815}
+  - component: {fileID: 1173283821}
   - component: {fileID: 1173283814}
-  - component: {fileID: 1173283813}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Untagged
@@ -3444,21 +3443,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1173283813
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1173283812}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 096a65af12fe6b94fab9edc71a63b9b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerLives: 3
-  thePlayer: {fileID: 1173283812}
-  charModel: {fileID: 1186018306}
 --- !u!114 &1173283814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3473,21 +3457,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 3
   isOnRightSide: 1
+  Player2Collider1: {fileID: 0}
   isJumping: 0
   comingDown: 0
+  player2Live: 0
   playerObject: {fileID: 1186018306}
---- !u!114 &1173283815
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1173283812}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26aabdcdb2d28c64c80527227aca2579, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!143 &1173283816
 CharacterController:
   m_ObjectHideFlags: 0
@@ -3585,6 +3559,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1173283821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1173283812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1dbfe6cea02a2a47bf03739d4b4741a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player2Lives: 3
+  thePlayer2: {fileID: 1173283812}
+  charModel2: {fileID: 1186018306}
 --- !u!1 &1179394798
 GameObject:
   m_ObjectHideFlags: 0

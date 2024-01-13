@@ -26,7 +26,6 @@ public class Player2Move : MonoBehaviour
     void Update()
     {
         player2Live =GameObject.Find("Player2").GetComponent<Player2Collider1>().player2Lives;
-        print(player2Live);
         //Vector 3 = z-Achse, 
         transform.Translate(Vector3.forward * Time.deltaTime * moveSpeed, Space.World);
         
