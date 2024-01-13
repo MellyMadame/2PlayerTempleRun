@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using UnityEditor.Build;
 using UnityEngine;
 
 public class Player2Move : MonoBehaviour
@@ -12,29 +13,30 @@ public class Player2Move : MonoBehaviour
   
     public bool isOnRightSide = true; // Starting on the Right side
     
+    public GameObject Player2Collider1;
+
+    Player2Collider1 colliderScript;
     public bool isJumping = false;
     public bool comingDown = false;
+    public float player2Live;
     
     public GameObject playerObject;
 
-    
     // Update is called once per frame
     void Update()
     {
-        print("in Update 2");
+        player2Live =GameObject.Find("Player2").GetComponent<Player2Collider1>().player2Lives;
         //Vector 3 = z-Achse, 
         transform.Translate(Vector3.forward * Time.deltaTime * moveSpeed, Space.World);
         
-            print("Is in canMove");
              if (isOnRightSide && Input.GetKeyUp(KeyCode.A))
-        {   print("Is in A");
+        {   
              SwitchSide();
            // Moves an object up 2 units
            transform.position += new Vector3(-4, 0, 0);
         }
         if (!isOnRightSide && Input.GetKeyUp(KeyCode.D))
         {   
-            print("Is in D");
             transform.position += new Vector3(4, 0, 0);
            SwitchSide();
         }
