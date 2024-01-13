@@ -9,10 +9,12 @@ public class PlayerMove : MonoBehaviour
 
     //es muss überprüft werden, ob der Spieler sich bewegen kann. Für den Start des Spiels (Tutorial 12)
     static public bool canMove = false;
-    private bool isOnLeftSide = true; // Starting on the left side
-
+    
     public bool isJumping = false;
     public bool comingDown = false;
+    
+     public GameObject prefabToSpawn;
+    public GameObject Player;
 
     public GameObject playerObject;
 
@@ -38,19 +40,16 @@ public class PlayerMove : MonoBehaviour
                     StartCoroutine(JumpSequence());
                 }
             }
+      
 
-
-            // Handle jumping
-            if (isJumping == true)
-            {
-                if (comingDown == false)
-                {
-                    transform.Translate(Vector3.up * Time.deltaTime * 3, Space.World);
-                }
-                if (comingDown == true)
-                {
-                    transform.Translate(Vector3.up * Time.deltaTime * -3, Space.World);
-                }
+        // Handle jumping
+        if (isJumping == true)
+        {
+            if(comingDown == false){
+                transform.Translate(Vector3.up * Time.deltaTime * 3, Space.World);
+            }
+            if(comingDown == true){
+                transform.Translate(Vector3.up * Time.deltaTime * -3, Space.World);
             }
         }
         
@@ -67,9 +66,8 @@ public class PlayerMove : MonoBehaviour
     {
         GameObject spawnedObject = Instantiate(prefabToSpawn, new Vector3(0.0f, Player.transform.position.y, Player.transform.position.z - 2f), Quaternion.identity);
     }
-
-    IEnumerator JumpSequence()
-    {
+    
+    IEnumerator JumpSequence(){
         yield return new WaitForSeconds(0.45f);
         comingDown = true;
         yield return new WaitForSeconds(0.45f);
@@ -78,5 +76,5 @@ public class PlayerMove : MonoBehaviour
         playerObject.GetComponent<Animator>().Play("Standard Run");
 
     }
-
+    
 }
