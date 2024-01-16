@@ -15,6 +15,8 @@ public class PlayerCollider : MonoBehaviour
     public GameObject particle;
     public float particleLifetime = 0.4f;
 
+    public GameObject restartWindow;
+
     private void Start()
     {
         thePlayer = GameObject.Find("Player");
@@ -42,6 +44,7 @@ public class PlayerCollider : MonoBehaviour
         {
             thePlayer.GetComponent<PlayerMove>().enabled = false;
             charModel.GetComponent<Animator>().Play("Stumble Back");
+            restartWindow.SetActive(true);
         }
         //}
         // You can add more collision checks for other scenarios (e.g., colliding with enemies, hazards, etc.)
