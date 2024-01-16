@@ -7,13 +7,13 @@ public class Player2Collider1 : MonoBehaviour
 {
     public int player2Lives = 3; // Initial number of lives
 
-    public GameObject thePlayer;
-    public GameObject charModel;
+    public GameObject thePlayer2;
+    public GameObject charModel2;
 
     private void Start()
     {
-        thePlayer = GameObject.Find("Player2");
-        charModel = GameObject.Find("/Player2/Ch48_nonPBR@Standard Run");
+        thePlayer2 = GameObject.Find("Player2");
+        charModel2 = GameObject.Find("/Player2/Ch48_nonPBR@Standard Run");
     }
 
     void OnTriggerEnter(Collider other)
@@ -30,8 +30,8 @@ public class Player2Collider1 : MonoBehaviour
             HideHearts();
             if (player2Lives == 0)
             {
-                thePlayer.GetComponent<PlayerMove>().enabled = false;
-                charModel.GetComponent<Animator>().Play("Stumble Back");
+                thePlayer2.GetComponent<Player2Move>().enabled = false;
+                charModel2.GetComponent<Animator>().Play("Stumble Back");
             }
         //}
         // You can add more collision checks for other scenarios (e.g., colliding with enemies, hazards, etc.)
@@ -41,15 +41,15 @@ public class Player2Collider1 : MonoBehaviour
     {
          if (player2Lives == 2)
         {
-            GameObject.Find("/Canvas/Heart3Player2").SetActive(false);
+            GameObject.Find("/Canvas/GreenHeart3").SetActive(false);
         }
         if (player2Lives == 1)
         {
-            GameObject.Find("/Canvas/Heart2Player2").SetActive(false);
+            GameObject.Find("/Canvas/GreenHeart2").SetActive(false);
         }
         if (player2Lives == 0)
         {
-            GameObject.Find("/Canvas/Heart1Player2").SetActive(false);
+            GameObject.Find("/Canvas/GreenHeart1").SetActive(false);
         }
     }
 }
