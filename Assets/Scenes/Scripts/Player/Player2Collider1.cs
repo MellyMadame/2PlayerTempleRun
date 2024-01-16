@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class Player2Collider1 : MonoBehaviour
 {
@@ -9,6 +10,11 @@ public class Player2Collider1 : MonoBehaviour
 
     public GameObject thePlayer2;
     public GameObject charModel2;
+
+    public AudioSource source;
+
+    public GameObject particle;
+    public float particleLifetime = 0.4f;
 
     private void Start()
     {
@@ -21,25 +27,39 @@ public class Player2Collider1 : MonoBehaviour
         // Check if the player collides with an object tagged as "LifePickup"
         //if (collision.gameObject.CompareTag("Obstacle"))
         //{
-            // Increment the player's lives
-            player2Lives--;
+        // Increment the player's lives
+        Vector3 collisionPosition = other.ClosestPoint(transform.position);
 
-            // Destroy the life pickup object (adjust as needed)
-            //Destroy(collision.gameObject);
+        // Activate particles at the collision position
+        ActivateParticles(collisionPosition);
+        
+        source.Play();
+        player2Lives--;
 
-            HideHearts();
-            if (player2Lives == 0)
-            {
-                thePlayer2.GetComponent<Player2Move>().enabled = false;
-                charModel2.GetComponent<Animator>().Play("Stumble Back");
-            }
+        // Destroy the life pickup object (adjust as needed)
+        //Destroy(collision.gameObject);
+
+        HideHearts();
+        if (player2Lives == 0)
+        {
+            thePlayer2.GetComponent<Player2Move>().enabled = false;
+            charModel2.GetComponent<Animator>().Play("Stumble Back");
+        }
         //}
         // You can add more collision checks for other scenarios (e.g., colliding with enemies, hazards, etc.)
     }
 
+    private void ActivateParticles(Vector3 position)
+    {
+        // Instantiate the particle system at the collision position
+        GameObject particleSystemInstance = Instantiate(particle, position, Quaternion.identity);
+
+        Destroy(particleSystemInstance, particleLifetime);
+    }
+
     private void HideHearts()
     {
-         if (player2Lives == 2)
+        if (player2Lives == 2)
         {
             GameObject.Find("/Canvas/GreenHeart3").SetActive(false);
         }
