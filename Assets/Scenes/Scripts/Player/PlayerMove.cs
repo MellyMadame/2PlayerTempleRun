@@ -15,6 +15,9 @@ public class PlayerMove : MonoBehaviour
     
      public GameObject prefabToSpawn;
     public GameObject Player;
+     public bool isDucking = false;
+    public bool standUp = false;
+    public bool crouch = false;
 
     public GameObject playerObject;
 
@@ -41,7 +44,14 @@ public class PlayerMove : MonoBehaviour
                 }
             }
       
-
+        if(Input.GetKey(KeyCode.DownArrow)){
+            print("KeyDown");
+                if(isDucking == false){
+                    print("isducking ist false");
+                isDucking = true;
+                playerObject.GetComponent<Animator>().Play("Running Slide(2)");
+                StartCoroutine(duckSequence());
+                }
         // Handle jumping
         if (isJumping == true)
         {
@@ -52,17 +62,25 @@ public class PlayerMove : MonoBehaviour
                 transform.Translate(Vector3.up * Time.deltaTime * -3, Space.World);
             }
         }
+        if(isDucking == true){
+            if(standUp == false){
+            transform.Translate(Vector3.down * Time.deltaTime * -3, Space.World);
+            }
+            if(standUp == true){
+                transform.Translate(Vector3.down * Time.deltaTime * 3, Space.World);
+            }
+        }
         
     }
     }
         //Vector 3 = z-Achse, 
      
-    private void SpawnPrefabLeft()
+    void SpawnPrefabLeft()
     {
         GameObject spawnedObject = Instantiate(prefabToSpawn, new Vector3(-3.2f, Player.transform.position.y, Player.transform.position.z - 2f), Quaternion.identity);
     }
 
-    private void SpawnPrefabRight()
+    void SpawnPrefabRight()
     {
         GameObject spawnedObject = Instantiate(prefabToSpawn, new Vector3(0.0f, Player.transform.position.y, Player.transform.position.z - 2f), Quaternion.identity);
     }
@@ -76,5 +94,11 @@ public class PlayerMove : MonoBehaviour
         playerObject.GetComponent<Animator>().Play("Standard Run");
 
     }
+    IEnumerator duckSequence(){
+        yield return new WaitForSeconds(0.6f);
+        isDucking = false;
+        playerObject.GetComponent<Animator>().Play("Standard Run");
+    }
     
+}
 }
