@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.25322774, g: 0.2169616, b: 0.23318167, a: 1}
+  m_IndirectSpecularColor: {r: 0.25322962, g: 0.21696037, b: 0.23321581, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4594,7 +4594,7 @@ MonoBehaviour:
   moveSpeed: 3
   maxMoveSpeed: 3.115
   accelerationRate: 0.0001
-  isOnRightSide: 1
+  isOnRightSide: 0
   Player2Collider1: {fileID: 0}
   colliderScript: {fileID: 0}
   isJumping: 0
@@ -4692,7 +4692,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1173283812}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.1, y: 0.6, z: -8.38}
+  m_LocalPosition: {x: -4, y: 0.6, z: -8.38}
   m_LocalScale: {x: 1, y: 1, z: 1.35}
   m_ConstrainProportionsScale: 0
   m_Children:
